@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>NoSky</title>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <div class="pfp"><img src="logo.png" alt="NoSky" onerror="this.style.display='none'"></div>
+            <span class="app-title">NoSky</span>
+            <span class="version" id="version-display"></span>
+        </div>
+        <a href="#" id="settings-link" class="icon-btn" title="Settings">⚙️</a>
+    </header>
+
+    <!-- INPUT + BUTTONS -->
+    <div class="content">
+        <div class="input-row" id="input-row">
+            <input type="password" id="token" placeholder="Paste your Discord Token here" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="toggle-row">
+            <label class="toggle-switch">
+                <input type="checkbox" id="save-account-checkbox" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Save Account</span>
+        </div>
+
+        <button id="login-btn" class="primary-btn">Login to Discord</button>
+        <button id="copy-token-btn" disabled class="copy-btn">Grab Token from Discord Tab</button>
+
+        <div class="bottom-row">
+            <button id="saved-accounts-trigger" class="accounts-link">Show Saved Accounts <span id="toggle-arrow">▼</span></button>
+        </div>
+        <p class="disclaimer">This extension will never collect your Token</p>
+    </div>
+
+    <!-- STATUS -->
+    <div id="status-message" class="status-message hidden">
+        <span class="status-text"></span>
+        <button class="status-close">×</button>
+    </div>
+
+    <!-- SAVED ACCOUNTS -->
+    <div id="account-list-container" class="account-list-container hidden">
+        <div class="accounts-header">Saved Accounts</div>
+        <div id="account-list"></div>
+    </div>
+
+    <!-- EXPORT BTN -->
+    <div class="fab-row">
+        <button id="export-all-btn" class="export-fab">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Export JSON
+        </button>
+    </div>
+</div>
+
+<!-- ═══ ACCOUNT DETAIL MODAL ═══ -->
+<div id="account-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-user">
+                <img id="modal-avatar" src="" alt="" class="modal-avatar"
+                     onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+                <div class="modal-user-info">
+                    <div id="modal-display-name" class="modal-display-name"></div>
+                    <div id="modal-username"      class="modal-username"></div>
+                </div>
+            </div>
+            <button id="close-modal" class="icon-close">×</button>
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+        <div class="modal-footer">
+            <button id="modal-login-btn" class="primary-btn sm">Login</button>
+            <button id="modal-copy-btn"  class="copy-btn sm">Copy Token</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="loading-overlay" class="hidden"><div class="spinner"></div></div>
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
